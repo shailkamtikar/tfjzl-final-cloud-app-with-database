@@ -86,7 +86,7 @@ class CourseListView(generic.ListView):
 
 class CourseDetailView(generic.DetailView):
     model = Course
-    template_name = 'onlinecourse/course_detail_bootstrap.html'
+    template_name = 'onlinecourse/course_details_bootstrap.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -164,6 +164,8 @@ def show_exam_result(request, course_id, submission_id):
         'results': results,
         'score': score,
         'total_score': total_score,
+        'possible': total_score,
+        'selected_ids': selected_ids,
         'grade': grade,
     }
     return render(request, 'onlinecourse/exam_result_bootstrap.html', context)
